@@ -23,3 +23,18 @@ export async function POST(request) {
     return NextResponse.json({ success: false, error: error.message });
   }
 }
+export async function GET() {
+  const msg = {
+    to:'kaio.franklin.dev@gmail.com',
+    from: 'kaio.franklin.dev@gmail.com',
+    subject:'via api',
+    text:'craizy, slacede',
+  };
+  try {
+    await sgMail.send(msg);
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ success: false, error: error.message });
+  }
+}
